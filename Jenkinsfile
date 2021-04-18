@@ -1,6 +1,6 @@
 node{
    stage('SCM Checkout'){
-     git 'https://github.com/magesh87/cicd/my-app.git'
+     git 'https://github.com/magesh87/CICD1.git'
    }
    
    stage('Compile-Package'){
@@ -15,7 +15,7 @@ node{
    }
    
    stage('Docker Image Push'){
-   withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
+   withCredentials([string(credentialsId: 'magesh87', variable: 'dockerPassword')]) {
    sh "docker login -u magesh87 -p ${dockerPassword}"
     }
    sh 'docker push magesh87/myweb:0.0.2'
@@ -32,9 +32,9 @@ node{
 	        }
 	    }
    stage('Nexus Image Push'){
-   sh "docker login -u admin -p admin123 13.235.76.228:8083"
-   sh "docker tag saidamo/myweb:0.0.2 13.235.76.228:8083/damo:1.0.0"
-   sh 'docker push 13.235.76.228:8083/damo:1.0.0'
+   sh "docker login -u admin -p admin123 3.133.143.27:8083"
+   sh "docker tag magesh87/myweb:0.0.2 3.133.143.27:8083/magesh87:1.0.0"
+   sh 'docker push 3.133.143.27:8083/magesh87:1.0.0'
    }
    stage('Remove Previous Container'){
 	try{
