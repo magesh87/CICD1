@@ -1,4 +1,4 @@
-node{
+node('Slave_CICD'){
     stage('SCM Checkout'){
      git 'https://github.com/magesh87/CICD1.git'
    }
@@ -42,8 +42,8 @@ node{
    
    stage('Nexus Image Push'){
    sh "docker login -u admin -p admin123 18.216.143.136:8083"
-   sh "docker tag magesh87/myweb:0.0.2 18.216.143.136:8083/magesh87:01"
-   sh 'docker push 18.216.143.136:8083/magesh87:01'
+   sh "docker tag magesh87/myweb:0.0.2 18.216.143.136:8083/magesh87:nexus01"
+   sh 'docker push 18.216.143.136:8083/magesh87:nexus01'
    }
    
 }
