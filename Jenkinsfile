@@ -1,4 +1,4 @@
-node('Slave_CICD'){
+node{
     stage('SCM Checkout'){
      git 'https://github.com/magesh87/CICD1.git'
    }
